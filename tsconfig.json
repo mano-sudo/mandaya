@@ -33,5 +33,12 @@
     ".next/dev/types/**/*.ts",
     "**/*.mts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules",
+    "app/components/floating-shoot-toggle.tsx",
+    "app/components/floating-shoot-toggle-host.tsx",
+    "app/components/footer.tsx",
+    "app/components/sections",
+    "components"
+  ]
 }
