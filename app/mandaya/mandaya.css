@@ -18,6 +18,10 @@
     html { scroll-behavior: smooth; }
     html { overflow-x: clip; max-width: 100%; }
     body { overflow-x: clip; width: 100%; max-width: 100%; }
+    @media (max-width: 768px) {
+      html, body { overflow-x: hidden; }
+      .mandaya-experience { overflow-x: hidden; }
+    }
     body { overflow-wrap: break-word; word-break: break-word; }
     .site-header, .hero, main, .site-footer, section { max-width: 100%; min-width: 0; }
     .brand-text, .brand-title, .header-inner { min-width: 0; }
@@ -176,11 +180,16 @@
     }
     .mag-card:hover { border-color: rgba(155, 28, 49, 0.35); transform: translateY(-2px); transition: 0.25s; }
 
-    #introduction .intro-grid {
-      display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 18px; align-items: start;
+    .intro-layout {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 18px;
+      align-items: start;
       padding: 18px;
     }
-    @media (max-width: 920px) { #introduction .intro-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 920px) {
+      .intro-layout { grid-template-columns: 1fr; }
+    }
 
     .dropcap:first-letter {
       float: left; font-family: var(--font-display), var(--font-display-fallback); font-size: 4.1rem; line-height: 0.85; padding-right: 10px; padding-top: 6px; color: var(--color-crimson);
@@ -396,11 +405,14 @@
     @media (max-width: 900px) {
       .ht-entry--left .ht-media,
       .ht-entry--right .ht-media {
-        max-width: min(240px, 100%);
+        max-width: 100%;
+        width: 100%;
       }
       .ht-entry--left .ht-card,
       .ht-entry--right .ht-card {
-        max-width: min(36ch, 100%);
+        max-width: 100%;
+        width: 100%;
+        justify-self: stretch;
       }
     }
 
@@ -411,11 +423,22 @@
       .history-ribbon-title {
         letter-spacing: 0.14em;
       }
+      .ht-card {
+        padding: clamp(18px, 4vw, 24px);
+      }
+      .ht-card h3 {
+        font-size: 0.92rem;
+        letter-spacing: 0.1em;
+      }
+      .ht-card p {
+        font-size: 1rem;
+        line-height: 1.6;
+      }
       .ht-entry {
         display: flex;
         flex-direction: column;
-        align-items: center;
-        gap: 12px;
+        align-items: stretch;
+        gap: 14px;
         margin-bottom: clamp(22px, 5vw, 30px);
       }
       .ht-rail {
@@ -544,6 +567,19 @@
       max-height: min(52vh, 440px);
       min-height: clamp(180px, 42vw, 320px);
       background: var(--color-ink);
+      overflow: hidden;
+    }
+    .social-slide-fig > span,
+    .political-panel-fig > span {
+      position: absolute !important;
+      inset: 0 !important;
+      display: block !important;
+      width: 100% !important;
+      height: 100% !important;
+      min-height: 0 !important;
+    }
+    .slide-figure-img {
+      object-fit: cover;
     }
     .social-slide-fig img {
       width: 100%;
@@ -553,7 +589,9 @@
       object-position: center 22%;
       display: block;
     }
+    .social-slide-fig--weaving .slide-figure-img,
     .social-slide-fig--weaving img { object-position: center 35%; }
+    .social-slide-fig--music .slide-figure-img,
     .social-slide-fig--music img { object-position: center top; }
     .social-slide-cap {
       position: absolute;
@@ -871,6 +909,7 @@
       max-height: min(52vh, 440px);
       min-height: clamp(180px, 38vw, 320px);
       background: var(--color-ink);
+      overflow: hidden;
     }
     .political-panel-fig img {
       width: 100%;
@@ -880,8 +919,11 @@
       object-position: center 30%;
       display: block;
     }
+    .political-panel-fig--festival .slide-figure-img,
     .political-panel-fig--festival img { object-position: center 20%; }
+    .political-panel-fig--elder .slide-figure-img,
     .political-panel-fig--elder img { object-position: center 35%; }
+    .political-panel-fig--village .slide-figure-img,
     .political-panel-fig--village img { object-position: center center; }
     .political-panel-cap {
       position: absolute;
@@ -1569,7 +1611,19 @@
     }
     @media (max-width: 520px) {
       .culture-toolbar { flex-direction: column; align-items: stretch; }
-      .culture-toolbar-nav { flex-direction: column; }
+      .culture-toolbar-nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+      }
+      .culture-counter {
+        flex: 1 1 100%;
+        text-align: center;
+      }
+      .culture-btn {
+        flex: 1 1 calc(50% - 6px);
+        min-height: 48px;
+      }
     }
 
     /* Religion split */
@@ -1720,8 +1774,8 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 14px;
     }
-    @media (max-width: 720px) {
-      .reflections-grid { grid-template-columns: 1fr; }
+    @media (max-width: 900px) {
+      .reflections-grid { grid-template-columns: 1fr; gap: 14px; }
     }
     .reflection-card {
       border-radius: var(--radius-lg);

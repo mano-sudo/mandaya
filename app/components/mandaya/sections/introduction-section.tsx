@@ -5,9 +5,9 @@ import SectionShell from "../section-shell";
 export default function IntroductionSection() {
   return (
     <SectionShell id="introduction" index="01" title="Introduction" tag="Overview" variant="editorial">
-      <div className="mag-card">
-        <MandayaStagger className="intro-grid" itemSelector=":scope > *" stagger={0.15}>
-          <div>
+      <div className="mag-card intro-panel">
+        <MandayaStagger className="intro-layout" itemSelector=":scope > *" stagger={0.15}>
+          <div className="intro-copy">
             <p className="dropcap">
               The Mandaya take their name from two words: <em>man</em> (&ldquo;people&rdquo;) and{" "}
               <em>daya</em> (&ldquo;upstream&rdquo; or the upper reaches of a river). It marks both a
@@ -31,7 +31,7 @@ export default function IntroductionSection() {
               references.
             </p>
           </div>
-          <figure className="photo-frame">
+          <figure className="photo-frame intro-media">
             <span className="photo-badge">Community</span>
             <Image
               src="/assets/t-21ec38b0-5a88-44cf-a36b-d0af59450846.png"
@@ -39,7 +39,8 @@ export default function IntroductionSection() {
               width={800}
               height={600}
               loading="lazy"
-              style={{ width: "100%", height: "auto" }}
+              sizes="100vw"
+              style={{ width: "100%", height: "auto", display: "block" }}
             />
             <figcaption>
               Community members in traditional and everyday dress; thatch and timber architecture

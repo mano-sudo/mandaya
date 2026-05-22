@@ -1,7 +1,15 @@
 "use client";
 
-import Image from "next/image";
 import { useCallback, useRef, useState } from "react";
+import SlideFigureImage from "./slide-figure-image";
+import { usePreloadImages } from "./use-preload-images";
+
+const POLITICAL_IMAGES = [
+  "/assets/t-21ec38b0-5a88-44cf-a36b-d0af59450846.png",
+  "/assets/r-654af73d-ad2b-44ae-922d-1e2fbb91afc7.png",
+  "/assets/q-59f93d10-2156-4858-9aa7-fa05ab1f97a4.png",
+  "/assets/e-09060972-8f85-411c-a8a6-8e7e3a07e47e.png",
+] as const;
 
 const TAB_COUNT = 4;
 
@@ -15,6 +23,8 @@ const TABS = [
 export default function PoliticalShowcase() {
   const [idx, setIdx] = useState(0);
   const tablistRef = useRef<HTMLDivElement>(null);
+
+  usePreloadImages(POLITICAL_IMAGES);
 
   const select = useCallback((index: number, scrollTab = false) => {
     const next = ((index % TAB_COUNT) + TAB_COUNT) % TAB_COUNT;
@@ -73,13 +83,11 @@ export default function PoliticalShowcase() {
           hidden={idx !== 0}
         >
           <figure className="political-panel-fig">
-            <Image
+            <SlideFigureImage
               src="/assets/t-21ec38b0-5a88-44cf-a36b-d0af59450846.png"
               alt="Mandaya community members representing collective leadership"
-              width={800}
-              height={600}
-              loading="lazy"
-              style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              objectPosition="center 30%"
+              priority
             />
             <figcaption className="political-panel-cap">
               Bicultural governance — traditional councils and Philippine institutions
@@ -113,18 +121,10 @@ export default function PoliticalShowcase() {
           hidden={idx !== 1}
         >
           <figure className="political-panel-fig political-panel-fig--festival">
-            <Image
+            <SlideFigureImage
               src="/assets/r-654af73d-ad2b-44ae-922d-1e2fbb91afc7.png"
               alt="Mandaya performers in traditional warrior-style dress"
-              width={800}
-              height={600}
-              loading="lazy"
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                objectPosition: "center 20%",
-              }}
+              objectPosition="center 20%"
             />
             <figcaption className="political-panel-cap">Bagani ideals — defense and communal duty</figcaption>
           </figure>
@@ -152,18 +152,10 @@ export default function PoliticalShowcase() {
           hidden={idx !== 2}
         >
           <figure className="political-panel-fig political-panel-fig--elder">
-            <Image
+            <SlideFigureImage
               src="/assets/q-59f93d10-2156-4858-9aa7-fa05ab1f97a4.png"
               alt="Mandaya elder weaving Dagmay cloth"
-              width={800}
-              height={600}
-              loading="lazy"
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                objectPosition: "center 35%",
-              }}
+              objectPosition="center 35%"
             />
             <figcaption className="political-panel-cap">Likid elders and Balyan spiritual authority</figcaption>
           </figure>
@@ -198,13 +190,10 @@ export default function PoliticalShowcase() {
           hidden={idx !== 3}
         >
           <figure className="political-panel-fig political-panel-fig--village">
-            <Image
+            <SlideFigureImage
               src="/assets/e-09060972-8f85-411c-a8a6-8e7e3a07e47e.png"
               alt="Historical Mandaya upland village"
-              width={800}
-              height={600}
-              loading="lazy"
-              style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              objectPosition="center center"
             />
             <figcaption className="political-panel-cap">
               Upland village — Dama customary law and IPMR representation

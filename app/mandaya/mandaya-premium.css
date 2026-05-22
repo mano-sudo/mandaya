@@ -345,7 +345,7 @@
   -webkit-text-stroke-color: rgba(255, 255, 255, 0.25);
 }
 
-.mandaya-experience #introduction .intro-grid {
+.mandaya-experience .intro-layout {
   padding: clamp(24px, 4vw, 36px);
   gap: clamp(20px, 3vw, 32px);
 }
@@ -489,6 +489,22 @@
 
 .mandaya-experience .photo-frame:hover img {
   transform: scale(1.03);
+}
+
+/* Slide sections (Social, Political, Culture) */
+.mandaya-experience .slide-showcase-wrap {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.mandaya-experience .slide-showcase-wrap .social-showcase,
+.mandaya-experience .slide-showcase-wrap .political-showcase,
+.mandaya-experience .slide-showcase-wrap .culture-book-shell {
+  border-radius: var(--md-radius-2xl);
+  border: 1px solid var(--md-glass-border);
+  overflow: hidden;
+  box-shadow: 0 28px 72px rgba(15, 12, 18, 0.08);
+  width: 100%;
 }
 
 .mandaya-experience .social-showcase,
@@ -641,5 +657,588 @@
   .mandaya-experience .issue-card::after {
     transform: none;
     transition: none;
+  }
+}
+
+/* ========== Mobile: unified side padding everywhere ========== */
+
+@media (max-width: 768px) {
+  .mandaya-experience {
+    --md-page-pad: clamp(18px, 5vw, 24px);
+    --md-gutter: var(--md-page-pad);
+    --md-text-inset: var(--md-page-pad);
+    --md-slide-gutter: 0;
+    --md-radius-xl: 18px;
+    --md-radius-2xl: 20px;
+    --md-content: 100%;
+  }
+
+  body:has(.mandaya-experience) {
+    font-size: 1.02rem;
+  }
+
+  .mandaya-experience .header-inner {
+    padding: 12px var(--md-page-pad);
+  }
+
+  .mandaya-experience .brand-kicker {
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+  }
+
+  .mandaya-experience .brand-title {
+    font-size: 1.1rem;
+  }
+
+  .mandaya-experience .brand-mark {
+    width: 40px;
+    height: 40px;
+  }
+
+  .mandaya-experience .main-nav {
+    inset: 64px 10px auto 10px;
+    max-height: min(75vh, 520px);
+  }
+
+  /* Hero */
+  .mandaya-experience .hero {
+    min-height: min(100svh, 900px);
+  }
+
+  .mandaya-experience .hero-inner {
+    padding: clamp(88px, 12vh, 110px) var(--md-page-pad) clamp(72px, 10vh, 96px);
+    gap: 20px;
+  }
+
+  .mandaya-experience .hero h1 {
+    max-width: none;
+    font-size: clamp(2.1rem, 9vw, 2.85rem);
+    line-height: 1.02;
+  }
+
+  .mandaya-experience .hero-lede {
+    max-width: none;
+    font-size: 1.05rem;
+    line-height: 1.65;
+  }
+
+  .mandaya-experience .hero-kicker {
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    padding: 7px 12px;
+  }
+
+  .mandaya-experience .hero-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .mandaya-experience .hero-actions .btn {
+    width: 100%;
+    justify-content: center;
+    min-height: 48px;
+  }
+
+  .mandaya-experience .hero-aside {
+    width: 100%;
+    gap: 10px;
+  }
+
+  .mandaya-experience .hero-stat {
+    width: 100%;
+    padding: 18px;
+  }
+
+  .mandaya-experience .hero-stat strong {
+    font-size: 1.75rem;
+  }
+
+  .mandaya-experience .hero-stat p {
+    font-size: 0.95rem;
+  }
+
+  .mandaya-experience .hero-scroll-cue {
+    bottom: 16px;
+    font-size: 0.6rem;
+  }
+
+  .mandaya-experience .hero-scroll-cue__line {
+    height: 36px;
+  }
+
+  /* Main + footer sections — same side padding */
+  .mandaya-experience main > .relative,
+  .mandaya-experience > .relative {
+    padding: clamp(36px, 7vh, 48px) 0;
+  }
+
+  .mandaya-experience main > .relative > .w-full,
+  .mandaya-experience > .relative > .w-full {
+    max-width: 100%;
+    width: 100%;
+    padding-inline: var(--md-page-pad);
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  .mandaya-experience .md-reveal-clip {
+    clip-path: none;
+  }
+
+  .md-section {
+    scroll-margin-top: 80px;
+    width: 100%;
+  }
+
+  .md-section__chrome {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    align-items: start;
+    margin-bottom: 18px;
+    padding: 0 0 14px;
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .md-section__body {
+    width: 100%;
+    padding-inline: 0;
+    box-sizing: border-box;
+  }
+
+  .md-section__index {
+    font-size: clamp(2.4rem, 14vw, 3.2rem);
+    line-height: 1;
+  }
+
+  .md-section__head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .md-section__title {
+    font-size: clamp(1.75rem, 7vw, 2.25rem);
+    width: 100%;
+  }
+
+  .md-section__tag {
+    font-size: 0.62rem;
+    padding: 7px 12px;
+  }
+
+  /* Cards — full width inside padded area, rounded */
+  .md-section__body .mag-card,
+  .md-section--editorial .md-section__body .mag-card,
+  .mandaya-experience .intro-panel,
+  .mandaya-experience .history-panel,
+  .mandaya-experience .refs.mag-card,
+  .mandaya-experience .religion-split,
+  .mandaya-experience .issue-card,
+  .mandaya-experience .reflection-card,
+  .mandaya-experience .economic-stat,
+  .mandaya-experience .chart-card {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    border-radius: var(--md-radius-xl);
+    border: 1px solid var(--color-line);
+    box-shadow: 0 8px 28px rgba(15, 12, 18, 0.06);
+    box-sizing: border-box;
+  }
+
+  /* Introduction */
+  .mandaya-experience .intro-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: clamp(16px, 4vw, 20px);
+  }
+
+  .mandaya-experience .intro-copy {
+    padding: 0;
+    width: 100%;
+  }
+
+  .mandaya-experience .intro-media {
+    width: 100%;
+    margin: 0;
+    border-radius: 14px;
+    border: 1px solid var(--color-line);
+    overflow: hidden;
+  }
+
+  .mandaya-experience .intro-media img {
+    width: 100%;
+    max-height: min(70vw, 420px);
+    object-fit: cover;
+    aspect-ratio: 4 / 3;
+  }
+
+  .mandaya-experience .dropcap:first-letter {
+    font-size: 3.2rem;
+    padding-right: 8px;
+  }
+
+  .mandaya-experience .pullquote {
+    font-size: 1.12rem;
+    padding: 14px 0 14px 14px;
+    margin: 14px 0;
+    border-radius: 0;
+  }
+
+  .mandaya-experience .photo-frame figcaption {
+    padding: 12px 14px;
+    font-size: 0.9rem;
+  }
+
+  /* History */
+  .mandaya-experience .history-panel {
+    padding: clamp(16px, 4vw, 20px);
+    box-sizing: border-box;
+  }
+
+  .mandaya-experience .history-timeline {
+    padding-inline: 0;
+    width: 100%;
+  }
+
+  .mandaya-experience .ht-media {
+    max-width: 100% !important;
+    width: 100%;
+  }
+
+  .mandaya-experience .ht-entry--left .ht-card,
+  .mandaya-experience .ht-entry--right .ht-card {
+    max-width: 100% !important;
+    width: 100%;
+  }
+
+  /* Slide sections — use page pad from parent, card fills width */
+  .mandaya-experience .slide-showcase-wrap {
+    padding-inline: 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .mandaya-experience .slide-showcase-wrap .social-showcase,
+  .mandaya-experience .slide-showcase-wrap .political-showcase,
+  .mandaya-experience .slide-showcase-wrap .culture-book-shell {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    border-radius: var(--md-radius-xl);
+    border: 1px solid var(--color-line);
+    box-shadow: 0 12px 36px rgba(15, 12, 18, 0.08);
+    overflow: hidden;
+  }
+
+  .mandaya-experience .culture-book-intro {
+    padding: 0 0 14px;
+    text-align: left;
+    max-width: none;
+    margin: 0;
+  }
+
+  .mandaya-experience .slide-showcase-wrap--culture .culture-stage-wrap {
+    padding: 14px;
+  }
+
+  .mandaya-experience .social-slide-content,
+  .mandaya-experience .political-panel-body {
+    padding: clamp(18px, 4vw, 22px) !important;
+  }
+
+  .mandaya-experience .social-pp-progress {
+    padding: 0 clamp(14px, 3vw, 18px) 12px;
+  }
+
+  .mandaya-experience .social-toolbar,
+  .mandaya-experience .political-toolbar,
+  .mandaya-experience .slide-showcase-wrap .culture-toolbar {
+    padding: 14px clamp(14px, 3vw, 18px);
+  }
+
+  .mandaya-experience .slide-showcase-wrap .culture-progress {
+    padding-inline: clamp(14px, 3vw, 18px);
+  }
+
+  .mandaya-experience .political-topics,
+  .mandaya-experience .social-topics {
+    padding: 12px clamp(12px, 3vw, 16px);
+  }
+
+  .mandaya-experience .social-slide-content h3,
+  .mandaya-experience .political-panel-body h3 {
+    font-size: clamp(1.25rem, 5vw, 1.5rem) !important;
+  }
+
+  .mandaya-experience .social-slide-content p,
+  .mandaya-experience .political-panel-body p,
+  .mandaya-experience .social-slide-list {
+    font-size: 1rem !important;
+    line-height: 1.6 !important;
+  }
+
+  .mandaya-experience .social-slide-fig,
+  .mandaya-experience .political-panel-fig {
+    min-height: clamp(220px, 56vw, 320px) !important;
+    max-height: none !important;
+    aspect-ratio: 4 / 3;
+    width: 100%;
+  }
+
+  .mandaya-experience .social-slide {
+    min-height: 0;
+  }
+
+  .mandaya-experience .social-viewport {
+    min-height: 200px;
+  }
+
+  .mandaya-experience .social-btn,
+  .mandaya-experience .political-btn,
+  .mandaya-experience .culture-btn {
+    min-height: 48px;
+    padding: 12px 16px;
+    font-size: 0.88rem;
+  }
+
+  /* Economic */
+  .mandaya-experience .economic-stat {
+    padding: 18px;
+  }
+
+  .mandaya-experience .economic-stat strong {
+    font-size: 1.5rem;
+  }
+
+  .mandaya-experience .economic-stat p {
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+
+  .mandaya-experience .chart-card {
+    padding: 18px;
+  }
+
+  .mandaya-experience .chart-title {
+    font-size: 1.2rem;
+  }
+
+  .mandaya-experience .bar-label {
+    font-size: 0.95rem;
+  }
+
+  .mandaya-experience .culture-mobile-page {
+    padding: clamp(16px, 4vw, 20px);
+  }
+
+  .mandaya-experience .culture-mobile-page .culture-page-fig img,
+  .mandaya-experience .culture-mobile-page .culture-page-fig--compact img {
+    height: clamp(180px, 48vw, 280px) !important;
+    max-height: none !important;
+  }
+
+  .mandaya-experience .culture-page h3 {
+    font-size: 1.2rem;
+  }
+
+
+  .mandaya-experience .culture-dots {
+    gap: 8px;
+    padding: 4px 0;
+  }
+
+  .mandaya-experience .culture-dot {
+    width: 10px;
+    height: 10px;
+    min-width: 10px;
+  }
+
+  .mandaya-experience .economic-dashboard {
+    padding: 0;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  .mandaya-experience .economic-stats {
+    gap: 12px;
+  }
+
+  .mandaya-experience .charts-grid {
+    gap: 12px;
+  }
+
+  .mandaya-experience .economic-body {
+    gap: 12px;
+  }
+
+  /* Footer: full-width band, padded text */
+  .mandaya-experience > .relative > .w-full:has(.site-footer) {
+    padding-inline: 0;
+  }
+
+  .mandaya-experience .site-footer {
+    padding: clamp(40px, 8vh, 56px) var(--md-page-pad);
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .mandaya-experience .site-footer .footer-inner {
+    max-width: 100%;
+    padding-inline: 0;
+  }
+
+  /* Culture gallery */
+  .mandaya-experience #culture-gallery .slide-showcase-wrap {
+    padding-inline: 0;
+  }
+
+  .mandaya-experience #culture-gallery .mag-card {
+    border-radius: var(--md-radius-xl);
+  }
+
+  /* Religion */
+  .mandaya-experience .religion-split {
+    overflow: hidden;
+  }
+
+  .mandaya-experience .religion-split .split-media {
+    min-height: clamp(220px, 56vw, 340px);
+    border-radius: var(--md-radius-xl) var(--md-radius-xl) 0 0;
+  }
+
+  /* Issues & reflections */
+  .mandaya-experience .cards {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 0;
+    width: 100%;
+  }
+
+  .mandaya-experience .issue-card {
+    padding: var(--md-page-pad);
+    min-height: auto;
+  }
+
+  .mandaya-experience .issue-card:last-child {
+    margin-bottom: 0;
+  }
+
+  .mandaya-experience .issue-card h3 {
+    font-size: clamp(1.2rem, 5vw, 1.4rem);
+    margin-bottom: 12px;
+  }
+
+  .mandaya-experience .issue-card p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-ink);
+  }
+
+  .mandaya-experience .reflections-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .mandaya-experience .reflection-card {
+    padding: var(--md-page-pad);
+  }
+
+  .mandaya-experience .reflection-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .mandaya-experience .reflection-card p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .mandaya-experience .religion-split .split-copy {
+    padding: var(--md-page-pad);
+  }
+
+  .mandaya-experience .religion-split .split-copy p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  /* References */
+  .mandaya-experience .refs.mag-card {
+    padding: var(--md-page-pad) !important;
+    box-sizing: border-box;
+  }
+
+  .mandaya-experience .refs li {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    margin-bottom: 16px;
+  }
+
+  /* Theme FAB — safe area */
+  .mandaya-experience .theme-fab {
+    right: max(12px, env(safe-area-inset-right));
+    bottom: max(12px, env(safe-area-inset-bottom));
+    width: 52px;
+    height: 52px;
+  }
+
+  .mandaya-experience .theme-panel {
+    right: max(12px, env(safe-area-inset-right));
+    bottom: max(72px, calc(60px + env(safe-area-inset-bottom)));
+    left: max(12px, env(safe-area-inset-left));
+    width: auto;
+    max-width: none;
+  }
+
+  /* Disable hover lift on touch */
+  .mandaya-experience .mag-card:hover,
+  .md-section__body .mag-card:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .mandaya-experience .hero h1 {
+    font-size: clamp(1.95rem, 8.5vw, 2.35rem);
+  }
+
+  .mandaya-experience .political-tab {
+    flex: 0 0 min(94%, 100%) !important;
+  }
+
+  .mandaya-experience .social-toolbar-nav,
+  .mandaya-experience .political-toolbar-nav,
+  .mandaya-experience .culture-toolbar-nav {
+    flex-wrap: wrap;
+  }
+
+  .mandaya-experience .social-counter,
+  .mandaya-experience .political-counter,
+  .mandaya-experience .culture-counter {
+    width: 100%;
+    text-align: center;
+    order: -1;
+    margin-bottom: 4px;
+  }
+
+  .mandaya-experience .economic-stats {
+    gap: 10px;
+  }
+
+  .mandaya-experience .theme-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .mandaya-experience .mag-card:hover,
+  .md-section__body .mag-card:hover,
+  .mandaya-experience .ht-card:hover,
+  .mandaya-experience .issue-card:hover {
+    transform: none;
+    box-shadow: inherit;
   }
 }

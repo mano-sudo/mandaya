@@ -11,7 +11,9 @@ export default function CultureSection() {
         the environment serves as both their sacred temple and their primary source of livelihood. The
         sequence below pairs short notes with images on facing panels.
       </p>
-      <CultureBook />
+      <div className="slide-showcase-wrap slide-showcase-wrap--culture">
+        <CultureBook />
+      </div>
     </SectionShell>
   );
 }
