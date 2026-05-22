@@ -1,44 +1,33 @@
-import { ThemeProvider } from "./components/theme-provider";
-
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import AppNavbar from "./components/navbar/app-navbar";
+import { Cormorant_Garamond, Outfit } from "next/font/google";
 import SmoothScroll from "./components/smooth-scroll";
-import PageTransition from "./components/page-transition";
-import FloatingShootToggleHost from "./components/floating-shoot-toggle-host";
-import CollaborativeCursors from "./components/collaborative-cursors";
+import "./mandaya/mandaya.css";
+import "./mandaya/mandaya-premium.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-display",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const outfit = Outfit({
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-body",
 });
-
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://romancaseres.cloud";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
-  title: "Roman Caseres | Software Developer",
-  description: "Roman Caseres is a software developer with a passion for building web applications.",
+  title: "Mandaya | People of the Upstream",
+  description:
+    "An overview of the Mandaya indigenous people of eastern Mindanao: history, society, governance, livelihood, culture, religion, and present-day issues.",
   icons: {
-    icon: "/DevByRoman.png",
-  },
-  openGraph: {
-    title: "Roman Caseres | Software Developer",
-    description: "Roman Caseres is a software developer with a passion for building web applications.",
-    images: "/DevByRoman.png",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Roman Caseres | Software Developer",
-    description: "Roman Caseres is a software developer with a passion for building web applications.",
-    images: ["/DevByRoman.png"],
+    icon: [
+      {
+        url: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a1520'/%3E%3Cpath fill='%23c9a227' d='M8 20h48v4H8zm0 10h48v4H8zm0 10h32v4H8z'/%3E%3Cpath fill='%239b1c31' d='M44 40h12v12H44z'/%3E%3C/svg%3E",
+        type: "image/svg+xml",
+      },
+    ],
   },
 };
 
@@ -48,18 +37,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
-          <AppNavbar />
-          <CollaborativeCursors />
-          <FloatingShootToggleHost />
-          <SmoothScroll>
-            <PageTransition>{children}</PageTransition>
-          </SmoothScroll>
-        </ThemeProvider>
+    <html lang="en" className={`${cormorant.variable} ${outfit.variable}`}>
+      <body>
+        <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>
   );

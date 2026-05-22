@@ -2,7 +2,7 @@
 
 import Lenis from "@studio-freight/lenis";
 import { usePathname } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, type ReactNode } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { logProjectsScroll } from "@/app/utils/projects-scroll-debug";
@@ -38,7 +38,7 @@ function shouldUseLenis(): boolean {
 }
 
 interface SmoothScrollProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 export default function SmoothScroll({ children }: SmoothScrollProps) {
@@ -71,6 +71,11 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
     });
 
     getWindowWithLenis().lenis = lenis;
+
+    if (pathname === "/" && !window.location.hash) {
+      lenis.scrollTo(0, { immediate: true });
+      window.scrollTo(0, 0);
+    }
 
     lenis.on("scroll", ScrollTrigger.update);
 
